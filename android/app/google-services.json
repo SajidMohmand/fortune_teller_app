@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "588982268519",
+    "project_id": "olirianpredicts",
+    "storage_bucket": "olirianpredicts.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:588982268519:android:56838b28bdefb961a9dac2",
+        "android_client_info": {
+          "package_name": "com.example.OlirianPredicts"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "588982268519-9e9hum3k1tjcfee53nd59afp4bq4kej5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.OlirianPredicts",
+            "certificate_hash": "ef2b9d94d70d59334b347aaf52a4e13119212a23"
+          }
+        },
+        {
+          "client_id": "588982268519-qtv1p4qnll6qv04cltl3nt8rnqp4kq4u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBWLtxwQxN8w2DFQaq0dmz5jmPgHmoIlk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "588982268519-qtv1p4qnll6qv04cltl3nt8rnqp4kq4u.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "588982268519-i9lss6f1134u1v5338rk7kuu56do7mff.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "OlirianPredicts"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
