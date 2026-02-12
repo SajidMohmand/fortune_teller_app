@@ -1,0 +1,29 @@
+name: iOS-ipa-build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-ios:
+    name: 🎉 iOS Build
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - run: flutter pub get
+
+      # ✅ Force iOS 15 in Xcode project
+      - name: Set iOS Deployment Target
+        run: |
+          sed -i '' 's/IPHONEOS_DEPLOYMENT_TARGET = 13.0/IPHONEOS_DEPLOYMENT_TARGET = 15.0/g' ios/Runner.xcodeproj/project.pbxproj || true
+
+      # ✅ Clean previous ios build
+      - run: flutter clean
+
+      # ✅ Let Flutter handle Pods automatically
+      - run: flutter build ios --release --no-codesign
