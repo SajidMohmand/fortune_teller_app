@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../fortune_teller_screens/question_dashboard_app.dart';
 import '../../widgets/social_button.dart';
 import '../home_main_screen.dart';
 import '../home_screen.dart';
@@ -41,17 +42,29 @@ class LoginScreen extends StatelessWidget {
                 icon: Icons.g_mobiledata,
                 color: Colors.white,
                 textColor: Colors.black,
-                onTap: () async {
-                  try {
-                    await authService.signInWithGoogle();
-                    Navigator.of(context).pushAndRemoveUntil(
-                      MaterialPageRoute(builder: (_) => const HomeMainScreen()),
-                          (route) => false,
-                    );
-                  } catch (e) {
-                    _showError(context, e.toString());
-                  }
-                },
+                  onTap: () async {
+                    try {
+                      final credential = await authService.signInWithGoogle();
+
+                      if (credential == null) return;
+
+                      final user = credential.user;
+
+                      if (user != null && user.email == "drayawill@gmail.com") {
+                        Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(builder: (_) => const QuestionDashboardApp()),
+                              (route) => false,
+                        );
+                      } else {
+                        Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(builder: (_) => const HomeMainScreen()),
+                              (route) => false,
+                        );
+                      }
+                    } catch (e) {
+                      _showError(context, e.toString());
+                    }
+                  },
               ),
 
               const SizedBox(height: 16),
@@ -63,12 +76,23 @@ class LoginScreen extends StatelessWidget {
                 textColor: Colors.white,
                 onTap: () async {
                   try {
-                    await authService.signInWithFacebook();
+                    final credential = await authService.signInWithFacebook();
 
-                    Navigator.of(context).pushAndRemoveUntil(
-                      MaterialPageRoute(builder: (_) => const HomeMainScreen()),
-                          (route) => false,
-                    );
+                    if (credential == null) return;
+
+                    final user = credential.user;
+
+                    if (user != null && user.email == "drayawill@gmail.com") {
+                      Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(builder: (_) => const QuestionDashboardApp()),
+                            (route) => false,
+                      );
+                    } else {
+                      Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(builder: (_) => const HomeMainScreen()),
+                            (route) => false,
+                      );
+                    }
                   } catch (e) {
                     _showError(context, e.toString());
                   }

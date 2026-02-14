@@ -87,22 +87,6 @@ class AppDrawer extends StatelessWidget {
                     style: TextStyle(color: Colors.white)),
                 onTap: () => onSelect(4),
               ),
-
-              if (user?.email == "DrayaWill@gmail.com")
-                ListTile(
-                  leading: const Icon(Icons.face, color: Colors.white),
-                  title: const Text("Fortune Teller login",
-                      style: TextStyle(color: Colors.white)),
-                  onTap: () {
-                    Navigator.pop(context);
-                    _showPasswordDialog(context);
-
-                  },
-                ),
-
-
-              const Spacer(),
-
               if (isLoggedIn)
                 ListTile(
                   leading: const Icon(Icons.logout, color: Colors.white),
@@ -126,51 +110,6 @@ class AppDrawer extends StatelessWidget {
           );
         },
       ),
-    );
-  }
-
-
-  void _showPasswordDialog(BuildContext context) {
-    final controller = TextEditingController();
-
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) {
-        return AlertDialog(
-          title: const Text("Fortune Teller Login"),
-          content: TextField(
-            controller: controller,
-            obscureText: true,
-            decoration: const InputDecoration(
-              labelText: "Enter password",
-            ),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text("Cancel"),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                if (controller.text == "f9zMSob8aXYEucgfndtZuF69ZL6eM") {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => const QuestionDashboardApp()),
-                  );
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text("Incorrect password"),
-                    ),
-                  );
-                }
-              },
-              child: const Text("Login"),
-            ),
-          ],
-        );
-      },
     );
   }
 }
